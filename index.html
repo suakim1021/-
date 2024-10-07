@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>텍스트 효과 연습</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html, body {
+            width: 100%;
+            height: 100%;
+            background-color: skyblue;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        section {
+            font-size: 100px;
+            color: white;
+            cursor: pointer;
+            user-select: none;
+        }
+        .letter { /* 글씨 스타일 설정 */
+            display: inline-block;
+            transition: 0.5s; /* 자연스럽게 움직이게 해주는 트랜지션 */
+            font-weight: 600;
+            transform-origin: center bottom;
+        }
+        .info {
+            display: block;
+            font-size: 20px;
+            color: rgb(84, 159, 202);
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <section id="design">
+        <span class="letter">D</span>
+        <span class="letter">i</span>
+        <span class="letter">g</span>
+        <span class="letter">t</span>
+        <span class="letter">a</span>
+        <span class="letter">l</span>
+        <span class="letter">D</span>
+        <span class="letter">e</span>
+        <span class="letter">s</span>
+        <span class="letter">i</span>
+        <span class="letter">g</span>
+        <span class="letter">n</span>
+        <span class="info">↑ 글씨를 클릭해 보세요!</span>
+    </section>
+
+    <script>
+        const letters = document.querySelectorAll('.letter');
+
+        document.querySelector('#design').addEventListener('click', function() {
+            letters.forEach((letter, index) => { // letters를 하나하나 불러와서 적용하기 위해 forEach사용
+                setTimeout(() => {
+                    letter.style.transform = 'scaleY(5)';
+                    letter.style.color = 'skyblue';
+                }, index * 100); // 순차적으로 애니메이션 시작
+
+                setTimeout(() => {
+                    letter.style.transform = 'scaleY(1)';
+                    letter.style.color = 'white';
+                }, (index * 100) + 500); // 원래 크기로 돌아오기
+            
+            });
+        });
+    </script>
+</body>
+</html>
